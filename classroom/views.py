@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from classroom.forms import ContactForm
 
 # Create your views here.
 
@@ -8,3 +9,7 @@ class HomeView(TemplateView):
 
 class ThankYou(TemplateView):
     template_name = 'classroom/thank_you.html'
+
+class ContactFormView(FormView):
+    form_class = ContactForm
+    
