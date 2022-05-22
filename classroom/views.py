@@ -22,6 +22,7 @@ class TeacherCreateView(CreateView):
 
 class TeacherListView(ListView):
     model = Teacher
+    context_object_name = 'teacher_list'
 
 class TeacherDetailView(DetailView):
     model = Teacher
