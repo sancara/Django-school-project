@@ -1,7 +1,7 @@
 from typing import List
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView
+from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView, UpdateView, DeleteView
 from classroom.forms import ContactForm
 from classroom.models import Teacher
 
@@ -38,3 +38,13 @@ class ContactFormView(FormView):
     def form_valid(self, form: ContactForm):
         print(form.cleaned_data)
         return super().form_valid(form)
+
+class TeacherUpdateView(UpdateView):
+
+    model = Teacher
+    fields = ['first_name', 'last_name', 'subject']
+    success_url = reverse_lazy('classroom:teacher_list')
+
+class TeacherDeleteView(DeleteView):
+    model = Teacher
+    success_url = reverse_lazy('classroom:teacher_list')
